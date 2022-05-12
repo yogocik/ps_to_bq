@@ -1,0 +1,1 @@
+This is Cloud Function Template for CDC Ingestion from Pub/Sub to BigQuery with structured dummy data.

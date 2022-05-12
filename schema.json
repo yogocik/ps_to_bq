@@ -1,0 +1,129 @@
+[
+    {
+      "name": "before",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "after",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source",
+      "type": "RECORD",
+      "mode": "REQUIRED",
+      "fields": [
+        {
+          "name": "version",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "connector",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "mode": "REQUIRED"
+        },
+        {
+          "name": "ts_ms",
+          "type": "INTEGER",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "snapshot",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "db",
+          "type": "STRING",
+          "mode": "REQUIRED"
+        },
+        {
+          "name": "sequence",
+          "type": "STRING",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "schema",
+          "type": "STRING",
+          "mode": "REQUIRED"
+        },
+        {
+          "name": "table",
+          "type": "STRING",
+          "mode": "REQUIRED"
+        },
+        {
+          "name": "txId",
+          "type": "INTEGER",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "lsn",
+          "type": "INTEGER",
+          "mode": "NULLABLE"
+        },
+        {
+          "name": "xmin",
+          "type": "FLOAT",
+          "mode": "NULLABLE"
+        }
+      ]
+    },
+    {
+      "name": "op",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "ts_ms",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "transaction",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source_ts",
+      "type": "DATETIME",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "cdc_ts",
+      "type": "DATETIME",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "snapshot",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "db_name",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "schema",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "table",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "rep_slot",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    }
+  ]
