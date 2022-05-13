@@ -43,12 +43,12 @@ dummy_data = {
 
 dummy_data_2 = {
   "before": {
-    "id": 41,
-    "name": "Gerrard",
+    "id": 1,
+    "name": "Damian",
     "created_at": 1652257309034061,
     "updated_at": 1652257309034061
   },
-  "after": "",
+  "after": None,
   "source": {
     "version": "1.9.2.Final",
     "connector": "postgresql",
@@ -65,7 +65,7 @@ dummy_data_2 = {
   },
   "op": "d",
   "ts_ms": 1652262089531,
-  "transaction": ""
+  "transaction": None
 }
 
 payload_data = {
@@ -75,11 +75,11 @@ payload_data = {
 def process_data(data: dict) -> dict:
     final_data = data["payload"].copy() if "payload" in data.keys() else data.copy()
     tz = pytz.timezone('Asia/Jakarta')
-    final_data["transaction"] = str(final_data.get("transaction")) if "transaction" in data.keys() else ""
-    final_data["before"] = json.dumps(final_data["before"]) if isinstance(final_data["before"],dict) else "" 
-    final_data["after"] = json.dumps(final_data["after"]) if isinstance(final_data["after"],dict) else ""
-    xmin = final_data.get("source").get("xmin") if "xmin" in final_data.get("source").keys() else 0.0
-    final_data["source"]["xmin"] = 0.0 if not(isinstance(xmin, int)) or not(isinstance(xmin, float)) else float(xmin) 
+    final_data["transaction"] = str(final_data.get("transaction")) if final_data.get("transaction") is not None else None
+    final_data["before"] = json.dumps(final_data["before"]) if isinstance(final_data["before"],dict) else None 
+    final_data["after"] = json.dumps(final_data["after"]) if isinstance(final_data["after"],dict) else None
+    xmin = final_data.get("source").get("xmin") if "xmin" in final_data.get("source").keys() else None
+    final_data["source"]["xmin"] = None if not(isinstance(xmin, int)) or not(isinstance(xmin, float)) else float(xmin)
     final_data["source_ts"] = datetime.datetime.fromtimestamp(final_data.get("source").get("ts_ms")/1000, tz).strftime('%Y-%m-%d %H:%M:%S')
     final_data["cdc_ts"] = datetime.datetime.fromtimestamp(final_data.get("ts_ms")/1000, tz).strftime('%Y-%m-%d %H:%M:%S')
     final_data["snapshot"] = False if final_data.get("source").get("snapshot").lower() == "false" else True
