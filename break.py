@@ -5,12 +5,6 @@ from google.cloud import bigquery
 import pytz
 import typing
 
-PROJECT_ID = "trial-project-star-capital"
-DATASET_ID = "CDC"
-TABLE_ID = "cdc-test-raw"
-
-client = bigquery.Client()
-
 dummy_data = {
   "before": {
     "id": 39,
@@ -77,6 +71,10 @@ payload_data = {
 
 # COPY FROM HERE INTO CLOUD FUNCTION
 
+client = bigquery.Client()
+
+PROJECT_ID = "trial-project-star-capital"                   # BigQuery Project ID
+DATASET_ID = "CDC"                                          # BigQuery Dataset ID
 table_prefix = "cdc_raw"                                    # BigQuery table's prefix for raw dataset
 table_list = [("testing", "testing"), ("random", "random")] # [(source_table_name, bq_table_name)] source-dataset table pairs for routing
 table_key_index = {"testing": ["id"],
