@@ -161,7 +161,7 @@ def extract_key_index(data:dict, table_name_attr:str="source_table" ,
         if data[ch_attr] is None:
             continue
         else:
-            for key in table_key_index[data["source_table"]]:
+            for key in table_key_index[data[table_name_attr]]:
                 data[key] = data[ch_attr][key] 
     return data
 
