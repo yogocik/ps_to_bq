@@ -87,11 +87,6 @@
       "mode": "NULLABLE"
     },
     {
-      "name": "transaction",
-      "type": "STRING",
-      "mode": "NULLABLE"
-    },
-    {
       "name": "source_ts",
       "type": "DATETIME",
       "mode": "REQUIRED"

@@ -1,122 +1,97 @@
 [
     {
-      "name": "op",
+      "name": "dt_ts_ms",
+      "type": "DATETIME",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "dt_source_ts_ms",
+      "type": "DATETIME",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "before",
       "type": "STRING",
       "mode": "NULLABLE"
+    },
+    {
+      "name": "after",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "op",
+      "type": "STRING",
+      "mode": "REQUIRED"
     },
     {
       "name": "ts_ms",
       "type": "INTEGER",
-      "mode": "NULLABLE"
+      "mode": "REQUIRED"
     },
     {
-      "name": "transaction",
-      "type": "FLOAT",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "after.id",
-      "type": "INTEGER",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "after.name",
+      "name": "source_version",
       "type": "STRING",
       "mode": "NULLABLE"
     },
     {
-      "name": "after.created_at",
-      "type": "INTEGER",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "after.updated_at",
-      "type": "INTEGER",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "before.id",
-      "type": "INTEGER",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "before.name",
+      "name": "source_connector",
       "type": "STRING",
       "mode": "NULLABLE"
     },
     {
-      "name": "before.created_at",
+      "name": "source_name",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "source_ts_ms",
       "type": "INTEGER",
-      "mode": "NULLABLE"
+      "mode": "REQUIRED"
     },
     {
-      "name": "before.updated_at",
-      "type": "INTEGER",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "source.version",
-      "type": "STRING",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "source.connector",
-      "type": "STRING",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "source.name",
-      "type": "STRING",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "source.ts_ms",
-      "type": "DATE",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "source.snapshot",
+      "name": "source_snapshot",
       "type": "BOOLEAN",
       "mode": "NULLABLE"
     },
     {
-      "name": "source.db",
+      "name": "source_db",
+      "type": "STRING",
+      "mode": "REQUIRED"
+    },
+    {
+      "name": "source_sequence",
       "type": "STRING",
       "mode": "NULLABLE"
     },
     {
-      "name": "source.sequence",
+      "name": "source_schema",
       "type": "STRING",
-      "mode": "NULLABLE"
+      "mode": "REQUIRED"
     },
     {
-      "name": "source.schema",
+      "name": "source_table",
       "type": "STRING",
-      "mode": "NULLABLE"
+      "mode": "REQUIRED"
     },
     {
-      "name": "source.table",
-      "type": "STRING",
-      "mode": "NULLABLE"
-    },
-    {
-      "name": "source.txId",
+      "name": "source_txId",
       "type": "INTEGER",
       "mode": "NULLABLE"
     },
     {
-      "name": "source.lsn",
+      "name": "source_lsn",
       "type": "INTEGER",
-      "mode": "NULLABLE"
+      "mode": "REQUIRED"
     },
     {
-      "name": "source.xmin",
+      "name": "source_xmin",
       "type": "FLOAT",
       "mode": "NULLABLE"
     },
     {
-      "name": "cdc_ts",
-      "type": "DATE",
-      "mode": "NULLABLE"
+        "name": "id",
+        "type": "INTEGER",
+        "mode": "REQUIRED"
     }
   ]
