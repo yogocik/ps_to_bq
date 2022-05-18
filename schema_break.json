@@ -1,0 +1,122 @@
+[
+    {
+      "name": "op",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "ts_ms",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "transaction",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "after.id",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "after.name",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "after.created_at",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "after.updated_at",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "before.id",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "before.name",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "before.created_at",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "before.updated_at",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.version",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.connector",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.name",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.ts_ms",
+      "type": "DATE",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.snapshot",
+      "type": "BOOLEAN",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.db",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.sequence",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.schema",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.table",
+      "type": "STRING",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.txId",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.lsn",
+      "type": "INTEGER",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "source.xmin",
+      "type": "FLOAT",
+      "mode": "NULLABLE"
+    },
+    {
+      "name": "cdc_ts",
+      "type": "DATE",
+      "mode": "NULLABLE"
+    }
+  ]

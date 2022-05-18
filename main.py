@@ -102,6 +102,7 @@ def send_into_bq(data:dict):
 
 def main():
     mydata = process_data(payload_data)
+    # Add json loads here
     print(json.dumps(mydata, indent=4, default=str))
     send_into_bq(mydata)
    

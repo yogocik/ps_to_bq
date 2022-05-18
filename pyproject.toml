@@ -17,6 +17,7 @@ pytest = "^5.2"
 
 [tool.poetry.scripts]
 run = "main:main"
+break = "break:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
