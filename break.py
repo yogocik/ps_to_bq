@@ -7,13 +7,13 @@ import typing
 
 dummy_data = {
   "before": {
-    "id": 39,
-    "name": "Guri",
+    "id": 2,
+    "name": "Gunandar",
     "created_at": 1652252473773807,
     "updated_at": 1652252473773807
   },
   "after": {
-    "id": 39,
+    "id": 2,
     "name": "Ginyu",
     "created_at": 1652252473773807,
     "updated_at": 1652341039620215
@@ -34,6 +34,33 @@ dummy_data = {
   },
   "op": "u",
   "ts_ms": 1652341039944,
+  "transaction": ""
+}
+
+dummy_data_cc = {
+  "before": None,
+  "after": {
+    "id": 2,
+    "name": "Gunandar",
+    "created_at": 165225247377498,
+    "updated_at": 1652341039620498
+  },
+  "source": {
+    "version": "1.9.2.Final",
+    "connector": "postgresql",
+    "name": "cdc_test",
+    "ts_ms": 1652341039498,
+    "snapshot": "false",
+    "db": "data_cdc_testdb",
+    "sequence": "[\"9790049520\",\"9790051144\"]",
+    "schema": "public",
+    "table": "testing",
+    "txId": 2611786,
+    "lsn": 9790051144,
+    "xmin": ""
+  },
+  "op": "c",
+  "ts_ms": 1652341039520,
   "transaction": ""
 }
 
@@ -213,7 +240,7 @@ def main():
     """Main execution for data processing and loading 
     """
     # Add json loads here
-    mydata = process_data(dummy_data_2)
+    mydata = process_data(dummy_data)
     print(json.dumps(mydata, indent=4, default=str))
     send_into_bq(mydata)
    
