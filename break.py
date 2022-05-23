@@ -4,25 +4,48 @@ from multiprocessing import dummy
 from google.cloud import bigquery
 import pytz
 import typing
+from faker import Faker
+import random
+
+def current_epoch_ms() -> int:
+    return round(datetime.datetime.now().timestamp() * 1000)
+
+
+def current_epoch_delta_ms(hour:int=0, minute:int=0, second:int=0) -> int:
+    added = (datetime.datetime.now() + 
+            datetime.timedelta(hours=hour, 
+                               minutes=minute, seconds=second)).timestamp() * 1000
+    return round(added)
+
+def generate_random_number(min:int=0, max:int=1000) -> int:
+    return random.randint(min,max)
+
+fake = Faker()
+
+def fake_name():
+    return fake.name()
+
+current_epoch = current_epoch_ms()
+random_id = generate_random_number(0,5)
 
 dummy_data = {
   "before": {
-    "id": 2,
-    "name": "Gunandar",
-    "created_at": 1652252473773807,
-    "updated_at": 1652252473773807
+    "id": random_id,
+    "name": fake_name(),
+    "created_at": current_epoch,
+    "updated_at": current_epoch
   },
   "after": {
-    "id": 2,
-    "name": "Ginyu",
-    "created_at": 1652252473773807,
-    "updated_at": 1652341039620215
+    "id": random_id,
+    "name": fake_name(),
+    "created_at": current_epoch,
+    "updated_at": current_epoch_delta_ms(minute=10)
   },
   "source": {
     "version": "1.9.2.Final",
     "connector": "postgresql",
     "name": "cdc_test",
-    "ts_ms": 1652341039620,
+    "ts_ms": current_epoch,
     "snapshot": "false",
     "db": "data_cdc_testdb",
     "sequence": "[\"9790049520\",\"9790051144\"]",
@@ -33,23 +56,23 @@ dummy_data = {
     "xmin": ""
   },
   "op": "u",
-  "ts_ms": 1652341039944,
+  "ts_ms": current_epoch_delta_ms(second=0.1),
   "transaction": ""
 }
 
 dummy_data_cc = {
   "before": None,
   "after": {
-    "id": 2,
-    "name": "Gunandar",
-    "created_at": 165225247377498,
-    "updated_at": 1652341039620498
+    "id": generate_random_number(),
+    "name": fake_name(),
+    "created_at": current_epoch,
+    "updated_at": current_epoch
   },
   "source": {
     "version": "1.9.2.Final",
     "connector": "postgresql",
     "name": "cdc_test",
-    "ts_ms": 1652341039498,
+    "ts_ms": current_epoch,
     "snapshot": "false",
     "db": "data_cdc_testdb",
     "sequence": "[\"9790049520\",\"9790051144\"]",
@@ -60,24 +83,24 @@ dummy_data_cc = {
     "xmin": ""
   },
   "op": "c",
-  "ts_ms": 1652341039520,
+  "ts_ms": current_epoch_delta_ms(second=0.1),
   "transaction": ""
 }
 
 dummy_data_2 = {
   "before": {
-    "id": 1,
-    "name": "Damian",
+    "id": random_id,
+    "name": fake_name(),
     "code": "XAM",
-    "created_at": 1652257309034061,
-    "updated_at": 1652257309034061
+    "created_at": current_epoch,
+    "updated_at": current_epoch
   },
   "after": None,
   "source": {
     "version": "1.9.2.Final",
     "connector": "postgresql",
     "name": "cdc_test",
-    "ts_ms": 1652262089153,
+    "ts_ms": current_epoch,
     "snapshot": "false",
     "db": "data_cdc_testdb",
     "sequence": "[\"9658244328\",\"9658244528\"]",
@@ -88,13 +111,18 @@ dummy_data_2 = {
     "xmin": ""
   },
   "op": "d",
-  "ts_ms": 1652262089531,
+  "ts_ms": current_epoch_delta_ms(second=0.1),
   "transaction": None
 }
 
 payload_data = {
-    "payload": dummy_data_2
+    "payload": {
+        "update" : dummy_data,
+        "create" : dummy_data_cc,
+        "delete" : dummy_data_2
+    }
 }
+
 
 # COPY FROM HERE INTO CLOUD FUNCTION
 
@@ -240,7 +268,7 @@ def main():
     """Main execution for data processing and loading 
     """
     # Add json loads here
-    mydata = process_data(dummy_data)
+    mydata = process_data(payload_data["payload"]["update"])
     print(json.dumps(mydata, indent=4, default=str))
     send_into_bq(mydata)
    
